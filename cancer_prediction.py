@@ -45,12 +45,18 @@ sns.pairplot(df.iloc[:, 1:11])
 plt.show()
 
 # Remove outliers using OneClassSVM algorithm
-out_model = svm.OneClassSVM(nu=0.05)
-out_model.fit(df)
-outlier_score = out_model.predict(df)
+
+
+def handle_outlier(daf):
+    out_model = svm.OneClassSVM(nu=0.05)
+    out_model.fit(daf)
+    outlier_score = out_model.predict(daf)
+    return daf[outlier_score == 1]
+
 
 # Storing data without outliers
-df_wo_outliers = df[outlier_score == 1]
+df_wo_outliers = handle_outlier(df)
+# df_wo_outliers = df[outlier_score == 1]
 print(df_wo_outliers)
 
 # Apply ADASYN for over sampling the data
@@ -80,7 +86,7 @@ transformed_x = pca.fit_transform(x_scaled)
 X_train, X_test, y_train, y_test = train_test_split(transformed_x, y_resampled, test_size=0.3, random_state=42)
 
 # Train the SVC model
-svc = SVC()
+svc = SVC(probability=True)
 svc.fit(X_train, y_train)
 
 # Evaluating the prediction
@@ -118,3 +124,5 @@ print("Best Parameters:", best_param)
 print("Test Accuracy:", accuracy)
 
 pickle.dump(final_model, open('model.pkl', 'wb'))
+# pickle.dump(scaler, open('scale.pkl', 'wb'))
+# pickle.dump(pca, open('pca.pkl', 'wb'))
