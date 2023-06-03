@@ -33,8 +33,8 @@ After all the process of building the model, I used it in our web app using pick
 which we can retrieve the created model and use it for the new data. Publish it with the help of streamlit.
 
 ## Learning outcomes
--*Statistical analysis of data*
--*Processing the data*
--*Suitable model selection*
--*Optimize the model*
+- *Statistical analysis of data*
+- *Processing the data*
+- *Suitable model selection*
+- *Optimize the model*
 
