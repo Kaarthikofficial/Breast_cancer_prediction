@@ -99,9 +99,9 @@ dataframe = pd.DataFrame(
 scale = scaled()
 pca = pca()
 scaled_df = scale.transform(dataframe)
-print(scaled_df)
+# print(scaled_df)
 pca_df = pca.transform(scaled_df)
-print(pca_df)
+# print(pca_df)
 
 if model.predict(pca_df) == 0:
     st.write('Prediction: **NO BREAST CANCER 🙌**')

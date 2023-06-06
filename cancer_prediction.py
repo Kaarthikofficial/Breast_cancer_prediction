@@ -124,5 +124,5 @@ print("Best Parameters:", best_param)
 print("Test Accuracy:", accuracy)
 
 pickle.dump(final_model, open('model.pkl', 'wb'))
-# pickle.dump(scaler, open('scale.pkl', 'wb'))
-# pickle.dump(pca, open('pca.pkl', 'wb'))
+pickle.dump(scaler, open('scale.pkl', 'wb'))
+pickle.dump(pca, open('pca.pkl', 'wb'))
