@@ -1,40 +1,34 @@
-# Breast Cancer prediction
-It focus on predicting the patient having breast cancer or not with the available data points. This project uses classification supervised learning algorithm SVM for classifying the target. 
+# Industrial_copper_analysis
+This is about determining price prediction of copper based on various factors using various regression models and also involves classifying the model based on the status of bidding. 
 
-## Model creation
+## Data Preprocessing
+    The most crucial step of data analysis starts with data preprocessing where we are able to understand what actually the data has
+and how the data is distributed. If we get those basic descriptive statistics, we can move forward on how to approach the problem.
+In this project, several pre-processing steps were carried out like change the data type of features, filling Na's with "-", remove
+Nas' and drop unwanted features. 
 
-### Load data
-To start with, first load the data using pandas and find some descriptive statistics of the data. This will help us to
-understand the data in better manner. Then look for any missing or null values in the data.
+### Univariate and Bivariate analysis
+In this step, I have done some basic univariate analysis on numeric features and found some skewness in some features.
+With the help of bivariate analysis I found the outliers present in the features correspond to target feature.
 
-### Data preprocessing
-This is an important step in any model creation where we need to process the data to optimize the outcome. It starts 
-with finding outliers and handling it, balance the dataset by finding whether target is balanced or not(for 
-classification problem), scaling the values using standardization or normalization.
+### Log transformation
+I used log transformation to handle skewness in the features. Several features were positively skewed which can be
+efficiently transformed by using log transformer. Following are the features transformed with the help of log transformer 
+* Quantity_tons
+* Thickness
+* Selling price
+Once after transformed, checked the distribution with the help of distplot in seaborn.
 
-### Feature selection and feature engineering
-Feature selection is a crucial step where we need to address the curse of dimensionality. Identify the potential 
-features in the data and leave the unimportant feature will help us to improve the model. Feature engineering is 
-done if two or more features tend to give some useful feature when combined. Feature extraction can also be done
-with the help of PCA to shrink the dimensions without data loss.
+### Encoding features
+Many categorical features in the data were transformed into numerical features. This step is 
+very much important before getting into model building process.
 
-### Split data and evaluation
-Final step in model creation is to split the data into training and test sets. After the splitting, apply the
-appropriate model over the data and find the results. At last, evaluate it with the help of different evluation 
-metrics like confusion matrix, ROC-AUC etc.,
+## Model building
+The data gets split into independent variables and target variable. Then the data is scaled using Standard Scaler 
+and the model is again split into training set and testing set.
+    I used Lazypredict, a powerful tool to identify the best ML model for regression and classification. After find
+the best model from that. I used it along with hyperparameter tuning to improve the performance of the model.
 
-### Hyperparameter tuning
-If the result from the model is not upto the level, we can improvise it using hyper parameter tuning. It varies 
-from model to model, first identify the parameters that can be tuned further and applied it with the help of
-grid search method. 
-
-## App build
-After all the process of building the model, I used it in our web app using pickle library through
-which we can retrieve the created model and use it for the new data. Publish it with the help of streamlit.
-
-## Learning outcomes
-- *Statistical analysis of data*
-- *Processing the data*
-- *Suitable model selection*
-- *Optimize the model*
-
+## Model Evaluation
+    For regression, I used MSE metric and R2 score to find the performance of the model and for classification I used
+accuracy score and confusion matrix to evaluate the model's performance.
